@@ -1,0 +1,54 @@
+# DocVision OCR - .gitignore
+
+# Environment variables (contains secrets)
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.DS_Store
+
+# Logs
+*.log
+logs/
+
+# Runtime generated files
+/tmp/
+*.tmp
+/tmp/easyocr_models/
+docvision_cache/
+docvision_reports/
+*.docx
+*.faiss
+nltk_data/
+uploads/
+*.pdf
+*.pkl
+*.pickle
