@@ -42,6 +42,7 @@ Provides optional post-processing intelligence including document summarization,
 The backend is FastAPI. The frontend is Gradio with seven tabs. Both run in the same container as separate processes, with Gradio calling FastAPI internally over the local network. This mirrors a microservices pattern and avoids the routing conflicts that occur when Gradio is mounted inside FastAPI as a sub-application.
 
 
+
 ## Technology Stack
 
     Backend API          FastAPI with Uvicorn
