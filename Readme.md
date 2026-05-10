@@ -1,6 +1,8 @@
 # DocVision OCR
 
-DocVision OCR is a production-grade AI system that transforms PDF documents into an interactive question-answering platform. The system is live and publicly accessible at https://huggingface.co/spaces/Ak47-model-ml/DocMind-AI. Upload any PDF, including scanned and image-based files, and ask natural language questions about its content. The system extracts, understands, and reasons over documents using a pipeline of specialized AI agents powered by the Groq API with LLaMA 3, returning grounded, source-attributed answers.
+DocVision OCR is a production-grade AI system that transforms PDF documents into an interactive question-answering platform. The system is live and publicly accessible at https://huggingface.co/spaces/Ak47-model-ml/DocMind-AI.
+
+Upload any PDF, including scanned and image-based files, and ask natural language questions about its content. The system extracts, understands, and reasons over documents using a pipeline of specialized AI agents powered by the Groq API with LLaMA 3, returning grounded, source-attributed answers.
 
 This project was built to go beyond a simple chatbot wrapper. It integrates retrieval-augmented generation, multi-agent orchestration, OCR processing, semantic search, hallucination detection, and document intelligence into a single deployable application, reflecting how AI systems are engineered in professional environments.
 
