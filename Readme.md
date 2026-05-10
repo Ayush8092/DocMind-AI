@@ -4,26 +4,38 @@ DocVision OCR is a production-grade AI system that transforms PDF documents into
 
 This project was built to go beyond a simple chatbot wrapper. It integrates retrieval-augmented generation, multi-agent orchestration, OCR processing, semantic search, hallucination detection, and document intelligence into a single deployable application, reflecting how AI systems are engineered in professional environments.
 
-
 ## Architecture
 
-The system follows a multi-agent pipeline. Each agent has a single well-defined responsibility and communicates with the next stage through a shared context object. This keeps the pipeline modular, testable, and easy to extend.
+The system follows a multi-agent pipeline. Each agent has a single well-defined responsibility and communicates through a shared context object. This keeps the architecture modular, testable, and easy to extend.
 
-    User Query
-        |
-    Orchestrator Agent     Classifies query type, routes the pipeline, generates follow-up suggestions
-        |
-    Retrieval Agent        Hybrid search using TF-IDF and FAISS semantic index, followed by cross-encoder reranking
-        |
-    Reasoning Agent        Step-by-step intermediate analysis using the LLM before the final answer is formed
-        |
-    Summarizer Agent       Generates the final grounded answer with tone and format adapted to the query type
-        |
-    Hallucination Guard    Validates the answer against retrieved source chunks using confidence and overlap signals
-        |
-    Report Agent           Writes a Word document containing the full Q&A result, reasoning notes, and sources
-        |
-    Insights Agent         On demand: auto-summary, key topics, difficulty analysis, notes, and exam questions
+<p align="center">
+  <img src="./Architecture_DocVision.svg" alt="DocVision OCR Architecture Diagram" width="100%">
+</p>
+
+---
+
+## Agents
+
+**i. Orchestrator Agent**  
+Classifies incoming queries, determines execution flow, coordinates inter-agent communication, and generates contextual follow-up suggestions to improve interaction continuity.
+
+**ii. Retrieval Agent**  
+Performs hybrid retrieval using TF-IDF keyword search and FAISS semantic vector search, followed by cross-encoder reranking to surface the most relevant document chunks.
+
+**iii. Reasoning Agent**  
+Executes structured intermediate reasoning over retrieved context, breaking complex questions into interpretable reasoning steps before response synthesis.
+
+**iv. Summarizer Agent**  
+Generates the final grounded response by synthesizing retrieved evidence and adapting answer structure, tone, and formatting based on query intent.
+
+**v. Hallucination Guard**  
+Validates generated responses against source document chunks using confidence scoring and semantic overlap verification to reduce unsupported outputs.
+
+**vi. Report Agent**  
+Produces structured Word reports containing generated answers, supporting reasoning traces, extracted evidence, and source attribution for downstream use.
+
+**vii. Insights Agent**  
+Provides optional post-processing intelligence including document summarization, topic extraction, difficulty estimation, note generation, and automatic exam-style question creation.
 
 The backend is FastAPI. The frontend is Gradio with seven tabs. Both run in the same container as separate processes, with Gradio calling FastAPI internally over the local network. This mirrors a microservices pattern and avoids the routing conflicts that occur when Gradio is mounted inside FastAPI as a sub-application.
 
