@@ -1,4 +1,4 @@
-# DocVision OCR
+# DocMind-AI OCR
 
 DocVision OCR is a production-grade AI system that transforms PDF documents into an interactive question-answering platform. The system is live and publicly accessible at https://huggingface.co/spaces/Ak47-model-ml/DocMind-AI.
 
